@@ -1,0 +1,62 @@
+{
+  "name": "ichiba-clients",
+  "description": "",
+  "version": "3.0.3",
+  "private": true,
+  "author": "RedQ, Inc",
+  "workspaces": [
+    "shared/**/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "clean:build": "lerna exec -- rimraf \"{.next,dist,out,build,.docz}\"",
+    "start:all": "lerna run --parallel start",
+    
+    "start:master": "yarn workspace master run start",
+    "build:master:staging": "yarn workspace master run build:staging",
+    "build:master": "yarn workspace master run build",
+    "serve:master": "yarn workspace master run serve",
+
+    "start:op": "yarn workspace op run start",
+    "build:op:staging": "yarn workspace op run build:staging",
+    "build:op": "yarn workspace op run build",
+    "serve:op": "yarn workspace op run serve"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": ""
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,css}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.0",
+    "eslint-config-prettier": "^6.12.0",
+    "husky": "^3.0.7",
+    "lerna": "^3.16.4",
+    "lint-staged": "^9.4.0",
+    "prettier": "^1.18.2",
+    "redux-devtools-extension": "^2.13.8",
+    "rimraf": "^3.0.0",
+    "serve": "^11.2.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
+    "antd": "^4.6.6",
+    "env-cmd": "^10.1.0",
+    "jwt-decode": "^3.0.0-beta.2",
+    "lodash": "^4.17.20",
+    "oidc-client": "^1.10.1",
+    "qs": "^6.9.4"
+  }
+}
